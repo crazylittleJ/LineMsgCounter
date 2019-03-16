@@ -1,8 +1,8 @@
 ### LineMsgCounter
 
-Author : EJ Huang
+Author : EJ
 
-Original Planning : Richard Lin
+Original Planning : Richard
 
 ## 下載連結: Win10 x86 版本 
 <a href="release.zip" download>這裡下載</a>
