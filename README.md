@@ -5,7 +5,7 @@ Author : EJ
 Original Planning : Richard
 
 ## 下載連結: Win10 x86 版本 
-<a href="release.zip" download>這裡下載</a>
+<a href="release20190320.zip" download>這裡下載-20190320-使用UTF-8編碼</a>
 
 ## 使用步驟
 
