@@ -39,6 +39,7 @@ int MessageParser::DoesTheUserExist(QString _qsName){
 int MessageParser::ParseAndCountMessages(QString _qsTxtFileName){
     QFile inputFile(_qsTxtFileName);
     QRegularExpression rx1("\\d{2}:\\d{2}\\t.*\\t.*");
+    QRegularExpression rx2("\\d{2}:\\d{2} .* .*");
     if (inputFile.open(QIODevice::ReadOnly))
     {
        QTextStream in(&inputFile);
@@ -46,8 +47,13 @@ int MessageParser::ParseAndCountMessages(QString _qsTxtFileName){
        {
           QString line = in.readLine();
           QRegularExpressionMatch match1 = rx1.match(line);
-          if(match1.hasMatch()){
-              QStringList tokens = line.split("\t");
+          QRegularExpressionMatch match2 = rx2.match(line);
+          if(match1.hasMatch() || match2.hasMatch()){
+              QStringList tokens;
+              if(match2.hasMatch())
+                  tokens = line.split(" ");
+              else
+                  tokens = line.split("\t");
               QString qsTheName = tokens[1];
               QString qsMessageType = tokens[2];
               int index = this->DoesTheUserExist(qsTheName);

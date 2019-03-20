@@ -2,6 +2,9 @@
 #include "ui_mainwindow.h"
 #include <QFileDialog>
 #include <QVariant>
+#include <iostream>
+#include <fstream>
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -83,7 +86,19 @@ void MainWindow::on_pushButton_clicked()
     //QString s = QFileDialog::getOpenFileName(this,tr("開啟檔案"),"/","C++ files(*.cpp)::Head files(*.h)");
     //限定只能開啟.txt的檔案
     QString s = QFileDialog::getOpenFileName();
+    this->MsgP->users.clear();
+    this->MsgP->user_statics.clear();
+    ui->pushButton_2->setEnabled(false);
+
+    ui->pushButton->setEnabled(false);
     this->MsgP->ParseAndCountMessages(s);
     ui->textEdit->setText(s);
     this->ReloadMessageCalc();
+    ui->pushButton->setEnabled(true);
+    ui->pushButton_2->setEnabled(true);
+}
+
+void MainWindow::on_pushButton_2_clicked()
+{
+    ui->pushButton_2->setEnabled(false);
 }
